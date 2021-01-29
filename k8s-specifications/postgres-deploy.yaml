@@ -32,3 +32,13 @@ spec:
               value: "postgres"
             - name: POSTGRES_PASSWORD
               value: "postgres"
+          readinessProbe:
+          exec:
+              command: ["psql", "-w", "-U", "abcd", "-d", "my-db", "-c", "SELECT 1"]
+          initialDelaySeconds: 15
+          timeoutSeconds: 2
+          livenessProbe:
+          exec:
+              command: ["psql", "-w", "-U", "abcd", "-d", "my-db", "-c", "SELECT 1"]
+          initialDelaySeconds: 45
+          timeoutSeconds: 2
