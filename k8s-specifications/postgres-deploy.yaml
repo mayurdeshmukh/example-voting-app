@@ -27,18 +27,23 @@ spec:
           image: postgres
           ports:
             - containerPort: 5432
+          readinessProbe:
+           exec:
+            command: ["pg_isready -U postgres"]
+           initialDelaySeconds: 15
+           timeoutSeconds: 5
+          livenessProbe:
+           exec:
+            command: ["pg_isready -U postgres"]
+           initialDelaySeconds: 5
+           timeoutSeconds: 2   
           env:
             - name: POSTGRES_USER
               value: "postgres"
             - name: POSTGRES_PASSWORD
               value: "postgres"
-          readinessProbe:
-          exec:
-              command: ["psql", "-w", "-U", "abcd", "-d", "my-db", "-c", "SELECT 1"]
-          initialDelaySeconds: 15
-          timeoutSeconds: 2
-          livenessProbe:
-          exec:
-              command: ["psql", "-w", "-U", "abcd", "-d", "my-db", "-c", "SELECT 1"]
-          initialDelaySeconds: 45
-          timeoutSeconds: 2
+
+
+          
+        
+          
