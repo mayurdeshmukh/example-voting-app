@@ -27,11 +27,6 @@ spec:
           image: postgres
           ports:
             - containerPort: 5432
-          readinessProbe:
-           exec:
-            command: ["pg_isready -U postgres"]
-           initialDelaySeconds: 15
-           timeoutSeconds: 5
           livenessProbe:
            exec:
             command: ["pg_isready -U postgres"]
