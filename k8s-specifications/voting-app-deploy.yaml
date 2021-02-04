@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: voting-app-deploy
+  name: voting-app
   labels:
-    name: voting-app-deploy
+    name: voting-app
     app: demo-voting-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: voting-app-pod
+      name: voting-app
       app: demo-voting-app
     
   template:
     metadata:
-      name: voting-app-pod
+      name: voting-app
       labels:
-        name: voting-app-pod
+        name: voting-app
         app: demo-voting-app
       annotations:
         'consul.hashicorp.com/connect-inject': 'true'

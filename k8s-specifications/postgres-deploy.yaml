@@ -1,39 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres-deploy
+  name: postgres
   labels:
-    name: postgres-deploy
+    name: postgre
     app: demo-voting-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: postgres-pod
+      name: postgres
       app: demo-voting-app
 
   template:
     metadata:
-      name: postgres-pod
+      name: postgres
       labels:
-        name: postgres-pod
+        name: postgres
         app: demo-voting-app
       annotations:
         'consul.hashicorp.com/connect-inject': 'true'
         'consul.hashicorp.com/connect-service-upstreams': 'result-app:80'
         
-        postgres
     spec:
       containers:
         - name: postgres
           image: postgres
           ports:
             - containerPort: 5432
-          livenessProbe:
-           exec:
-            command: ["pg_isready -U postgres"]
-           initialDelaySeconds: 5
-           timeoutSeconds: 2   
           env:
             - name: POSTGRES_USER
               value: "postgres"
