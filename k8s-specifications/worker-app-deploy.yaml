@@ -20,7 +20,7 @@ spec:
         app: demo-voting-app
       annotations:
         'consul.hashicorp.com/connect-inject': 'true'
-        'consul.hashicorp.com/connect-service-upstreams': 'redis:6379'
+        'consul.hashicorp.com/connect-service-upstreams': 'postgres:5432'
     spec:
       containers:
         - name: worker-app
