@@ -5,7 +5,7 @@ FROM python:2.7-alpine
 WORKDIR /app
 
 # Install our requirements.txt
-ADD example-voting-app/vote/requirements.txt /app/requirements.txt #Changed this line added ./
+ADD requirements.txt /app/requirements.txt #Changed this line added ./
 RUN pip install -r requirements.txt
 
 # Copy our code from the current folder to /app inside the container
