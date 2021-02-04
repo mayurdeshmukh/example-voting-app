@@ -20,7 +20,9 @@ spec:
         app: demo-voting-app
       annotations:
         'consul.hashicorp.com/connect-inject': 'true'
-        'consul.hashicorp.com/connect-service-upstreams': 'workerapp:80'
+        'consul.hashicorp.com/connect-service-upstreams': 'result-app:80'
+        
+        postgres
     spec:
       containers:
         - name: postgres
