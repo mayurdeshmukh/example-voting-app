@@ -20,7 +20,7 @@ spec:
         app: demo-voting-app
       annotations:
         'consul.hashicorp.com/connect-inject': 'true'
-        'consul.hashicorp.com/connect-service-upstreams': 'voting-app:80'
+        'consul.hashicorp.com/connect-service-upstreams': 'worker-app:80'
     spec:
       containers:
         - name: redis
