@@ -11,7 +11,7 @@ spec:
     matchLabels:
       name: voting-app-pod
       app: demo-voting-app
-
+    
   template:
     metadata:
       name: voting-app-pod
@@ -26,15 +26,3 @@ spec:
           image: kodekloud/examplevotingapp_vote:v1
           ports:
             - containerPort: 80
-            readinessProbe:
-              httpGet:
-                scheme: HTTP
-                path: /index.html
-                port: 80
-              initialDelaySeconds: 10
-              periodSeconds: 5
-          resources:
-           limits:
-              cpu: "100m"
-           requests:
-             cpu: "100m"
